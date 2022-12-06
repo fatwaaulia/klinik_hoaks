@@ -14,5 +14,5 @@ return [
     "integer"       => "kolom hanya boleh berisi angka",
     "is_image"      => "hanya file gambar yang boleh diunggah",
     "ext_in"        => "ekstensi file tidak valid. pilih {param}",
-    "uploaded"      => "bukan file unggahan yang valid",
+    "uploaded"      => "wajib upload file",
 ];

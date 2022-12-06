@@ -9,7 +9,7 @@ $user = model('User')->where('id', $user_session['id'])->first();
 	<nav id="sidebar" class="sidebar js-sidebar">
 		<div class="sidebar-content js-simplebar">
 			<a class="sidebar-brand" href="<?= base_url('dashboard') ?>">
-				<img src="<?= base_url().'/assets/img/logo.png' ?>" class="w-100" alt="<?= getenv('app.name') ?>">
+				<img src="<?= base_url().'/assets/img/logo-kominfo.png' ?>" class="w-100" alt="<?= getenv('app.name') ?>">
 			</a>
 
 			<ul class="sidebar-nav">
@@ -31,6 +31,20 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'url'     => 'user',
 						'icon'    => 'fa-solid fa-user-group',
 						'active'  => 'user',
+						'role'    => ['1'],
+					],
+					[
+						'text'    => 'Berita',
+						'url'     => 'berita',
+						'icon'    => 'fa-solid fa-newspaper',
+						'active'  => 'berita',
+						'role'    => ['1'],
+					],
+					[
+						'text'    => 'Platform',
+						'url'     => 'platform',
+						'icon'    => 'fa-solid fa-hashtag',
+						'active'  => 'platform',
 						'role'    => ['1'],
 					],
 					[

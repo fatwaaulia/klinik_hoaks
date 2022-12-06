@@ -91,8 +91,25 @@ $routes->group('user', ['filter' => 'Superadmin'], static function ($routes) {
     $routes->get('edit/(:segment)', 'User::edit/$1');
     $routes->post('update/(:segment)', 'User::update/$1');
     $routes->post('delete/(:segment)', 'User::delete/$1');
-    
     $routes->post('delete-image/(:segment)', 'User::deleteImg/$1');
+});
+// Berita
+$routes->group('berita', ['filter' => 'Superadmin'], static function ($routes) {
+    $routes->get('/', 'Berita::index');
+    $routes->get('new', 'Berita::new');
+    $routes->post('create', 'Berita::create');
+    $routes->get('edit/(:segment)', 'Berita::edit/$1');
+    $routes->post('update/(:segment)', 'Berita::update/$1');
+    $routes->post('delete/(:segment)', 'Berita::delete/$1');
+});
+// Platform
+$routes->group('platform', ['filter' => 'Superadmin'], static function ($routes) {
+    $routes->get('/', 'Platform::index');
+    $routes->get('new', 'Platform::new');
+    $routes->post('create', 'Platform::create');
+    $routes->get('edit/(:segment)', 'Platform::edit/$1');
+    $routes->post('update/(:segment)', 'Platform::update/$1');
+    $routes->post('delete/(:segment)', 'Platform::delete/$1');
 });
 // Handling 404
 $routes->group('handling-404', ['filter' => 'Superadmin'], static function ($routes) {

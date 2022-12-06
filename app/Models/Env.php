@@ -26,4 +26,10 @@ class Env extends Model
         return $random;
     }
 
+    public function slug($id)
+    {
+        $slug = strtolower(preg_replace('~[^\pL\d]+~u', '-', $id));
+        return $slug;
+    }
+
 }

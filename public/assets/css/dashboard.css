@@ -1,0 +1,61 @@
+h1,h2,h3,h4,h5,h6,label, th, td {
+    color: black!important;
+}
+body {
+    background-color:#f5f7fb!important;
+    font-size: 1rem;
+}
+
+/* ADMIN KIT */
+h1 {font-size: calc(1.375rem + 1.5vw)}
+h2 {font-size: calc(1.325rem + .9vw)}
+h3 {font-size: calc(1.3rem + .6vw)}
+h4 {font-size: calc(1.275rem + .3vw)}
+h5 {font-size: 1.25rem}
+h6 {font-size: 1rem}
+
+.content {
+    padding: 0px 12px!important;
+}
+
+.form-control, .form-select, .dropdown-item {
+    color: #252525;
+    font-size: 1rem;
+}
+.form-control, .form-select, .dropdown-item:focus {
+    color: #252525!important;
+}
+
+.dropdown-item:active {
+    color:white!important;
+    background-color: #3b7ddd!important;
+}
+
+/* Sidebar */
+.sidebar,.sidebar-content{
+    background:#fff;
+}
+.sidebar-link,a.sidebar-link{
+    background:#fff;
+    color:#252525;
+}
+.sidebar-link i,.sidebar-link svg,a.sidebar-link i,a.sidebar-link svg{
+    color:#252525;
+}
+
+.sidebar-header {
+    color:#252525;
+    font-weight: 600;
+}
+
+.sidebar-item.active .sidebar-link:hover,.sidebar-item.active>.sidebar-link{
+    background-color: #0f4ca9;
+    border-left-color:#0f4ca9;
+    color:#fff;
+}
+.sidebar-item>.sidebar-link:hover {
+    background-color: #3b7ddd;
+    border-left-color:#3b7ddd;
+    color:#fff;
+}
+/* Akhir sidebar */

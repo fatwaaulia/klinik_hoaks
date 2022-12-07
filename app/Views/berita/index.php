@@ -26,10 +26,10 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Kategori</th>
                             <th>Gambar</th>
                             <th>Nama Berita</th>
                             <th>Sumber</th>
+                            <th>Kategori</th>
                             <th>Platform</th>
                             <th>Opsi</th>
                         </tr>
@@ -40,22 +40,22 @@
                             <td><?= $key+1 ?></td>
                             <td>
                                 <?php
-                                    $kategori = model('Kategori')->where('id', $v['id_kategori'])->first();
-                                    echo $kategori['nama'];
-                                ?>
-                            </td>
-                            <td>
-                                <?php
                                 if ($v['img']) {
                                     $img = base_url('assets/img/'.$name.'/'.$v['img']);
                                 } else {
-                                    $img = base_url('assets/img/user-default.png');
+                                    $img = base_url('assets/img/default.png');
                                 }
                                 ?>
                                 <img src="<?= $img ?>" class="wh-40 img-style" loading="lazy">
                             </td>
                             <td><?= $v['nama'] ?></td>
                             <td><?= $v['sumber'] ?></td>
+                            <td>
+                                <?php
+                                    $kategori = model('Kategori')->where('id', $v['id_kategori'])->first();
+                                    echo $kategori['nama'];
+                                ?>
+                            </td>
                             <td>
                                 <?php
                                     $platform = model('Platform')->where('id', $v['id_platform'])->first();

@@ -34,6 +34,10 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'    => ['1'],
 					],
 					[
+						'text'    => 'BERITA',
+						'role'   => ['1'],
+					],
+					[
 						'text'    => 'Berita',
 						'url'     => 'berita',
 						'icon'    => 'fa-solid fa-newspaper',

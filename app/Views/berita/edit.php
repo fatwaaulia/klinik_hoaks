@@ -23,7 +23,7 @@
                                     if ($data['img']) {
                                         $img = base_url('assets/img/'.$name.'/'.$data['img']);
                                     } else {
-                                        $img = base_url('assets/img/user-default.png');
+                                        $img = base_url('assets/img/default.png');
                                     }
                                     ?>
                                         <img src="<?= $img ?>" class="<?= $val->hasError('img') ? "border border-danger" : '' ?> w-100 h-100 img-style" id="frame">

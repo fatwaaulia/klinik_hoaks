@@ -17,9 +17,13 @@ class Berita extends Model
     ];
     protected $useTimestamps = true;
 
-    public function password_hash($password = null)
+    public function joinKategori($id_kategori)
     {
-        return hash('SHA512', 'S3cuR1ty'. $password. 'Sys73m');
+        $db      = \Config\Database::connect();
+        $builder = $db->table('berita a');
+        $builder->select('a.*,b.nama as nama_kategori');
+        $builder->join('kategori b', 'b.id = a.id_kategori AND b.id ='.$id_kategori);
+        return $builder->get();
     }
 
 }

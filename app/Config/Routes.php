@@ -50,7 +50,10 @@ $routes->set404Override(
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
-$routes->get('/', 'Auth::login');
+$routes->get('/', 'Landingpage::home');
+$routes->get('subscribe', 'Landingpage::subscribe');
+$routes->post('create-subscribe', 'Landingpage::createSubscribe');
+$routes->get('delete-subscribe/(:any)', 'Landingpage::deleteSubscribe/$1');
 
 // AUTENTIKASI
 // Login
@@ -111,6 +114,7 @@ $routes->group('platform', ['filter' => 'Superadmin'], static function ($routes)
     $routes->post('update/(:segment)', 'Platform::update/$1');
     $routes->post('delete/(:segment)', 'Platform::delete/$1');
 });
+$routes->get('subscriber', 'Dashboard::subscriber', ['filter' => 'Superadmin']);
 // Handling 404
 $routes->group('handling-404', ['filter' => 'Superadmin'], static function ($routes) {
     $routes->get('/', 'Handling_404::index');

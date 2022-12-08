@@ -34,6 +34,17 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'    => ['1'],
 					],
 					[
+						'text'    => 'VALIDASI BERITA',
+						'role'   => ['1'],
+					],
+					[
+						'text'    => 'Pengajuan',
+						'url'     => 'dashboard',
+						'icon'    => 'fa-regular fa-paper-plane',
+						'active'  => 'pengajuan',
+						'role'    => ['1'],
+					],
+					[
 						'text'    => 'BERITA',
 						'role'   => ['1'],
 					],
@@ -49,6 +60,13 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'url'     => 'platform',
 						'icon'    => 'fa-solid fa-hashtag',
 						'active'  => 'platform',
+						'role'    => ['1'],
+					],
+					[
+						'text'    => 'Subscriber',
+						'url'     => 'subscriber',
+						'icon'    => 'fa-solid fa-check',
+						'active'  => 'subscriber',
 						'role'    => ['1'],
 					],
 					[

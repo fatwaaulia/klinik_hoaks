@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="description" content="" />
-    <link rel="shortcut icon" href="<?= base_url() . '/favicon.ico' ?>" />
+    <link rel="shortcut icon" href="<?= base_url().'/assets/img/logo_provinsi_jawa_timur.png' ?>" />
 
     <title><?= isset($title) ? $title .' | '. getenv('app.name') : getenv('app.name') ?></title>
 
     <!-- BOOTSTRAP 5 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 
     <!-- ADMINKIT CSS -->
     <link href="<?= base_url().'/assets/adminkit/' ?>css/app.css" rel="stylesheet">
@@ -65,7 +65,7 @@
     <script src="<?= base_url().'/assets/adminkit/' ?>js/app.js"></script>
 
     <!-- BOOTSTRAP 5 JS -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
     <!-- MY SCRIPT -->
     <script src="<?=base_url().'/assets/js/script.js' ?>"></script>

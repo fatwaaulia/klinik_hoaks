@@ -5,6 +5,53 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="fw-500 mb-2">Pengajuan</p>
+                            <h4 class="mb-0 fw-600">15</h4>
+                        </div>
+                        <div class="col-3 text-end text-warning position-relative">
+                            <i class="fa-regular fa-paper-plane fa-2x position-absolute top-50 start-50 translate-middle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="fw-500 mb-2">Berita</p>
+                            <h4 class="mb-0 fw-600"><?= count(model('Berita')->findAll()) ?></h4>
+                        </div>
+                        <div class="col-3 text-end text-primary position-relative">
+                            <i class="fa-solid fa-newspaper fa-2x position-absolute top-50 start-50 translate-middle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="fw-500 mb-2">Subscriber</p>
+                            <h4 class="mb-0 fw-600">29</h4>
+                        </div>
+                        <div class="col-3 text-end text-success position-relative">
+                            <i class="fa-solid fa-check fa-2x position-absolute top-50 start-50 translate-middle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">

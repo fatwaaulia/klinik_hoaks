@@ -9,12 +9,13 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail = 'fatwa@karyastudio.com';
+    // public $fromEmail = 'fatwa@karyastudio.com';
+    public $fromEmail = 'fatwaaulia.fy@gmail.com';
 
     /**
      * @var string
      */
-    public $fromName = 'Web App';
+    public $fromName = 'Klinik Hoaks';
 
     /**
      * @var string
@@ -47,21 +48,24 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost = 'mail.karyastudio.com';
+    // public $SMTPHost = 'mail.karyastudio.com';
+    public $SMTPHost = 'smtp.gmail.com';
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser = 'fatwa@karyastudio.com';
+    // public $SMTPUser = 'fatwa@karyastudio.com';
+    public $SMTPUser = 'fatwaaulia.fy@gmail.com';
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = '[phGZ=QnRG^S';
+    // public $SMTPPass = '[phGZ=QnRG^S';
+    public $SMTPPass = 'iqhcwfhzbahqbgmr';
 
     /**
      * SMTP Port

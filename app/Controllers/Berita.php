@@ -147,6 +147,43 @@ class Berita extends BaseController
             
             // dd($field);
             $this->model->insert($field);
+
+            $berita = $this->model->where('id', $this->model->getInsertID())->first();
+
+            // echo $berita['nama'];
+
+            // die;
+            $subs = model('User')->where('id_role',3)->findAll();
+            foreach ($subs as $v) {
+                // Kirim email
+                $toEmail  = $v['email'];
+                $toName   = $v['nama'];
+                $subject  = 'Berita Terkini';
+                
+                $data['name'] = $toName;
+                $data['text'] = 'Baca: <a href="'.base_url().'">'.$berita['nama'].'</a>';
+                $data['button_link'] = base_url().'/delete-subscribe/'. $toEmail;
+                $data['button_name'] = 'Unsubscribe';
+                $message = view('auth/email_template', $data);
+
+                $email = service('email');
+                $email->setFrom($email->fromEmail, $email->fromName);
+                $email->setTo($toEmail);
+                $email->setSubject($subject);
+                $email->setMessage($message);
+
+                $email->send();
+                // if ($email->send()) {
+                //     echo 'berhasil';
+                // } else {
+                //     $data = $email->printDebugger(['headers']);
+                //     print_r($data);
+                //     die;
+                // }
+            }
+
+            // die;
+
             return redirect()->to($this->route)
                 ->with('message',
                 "<script>

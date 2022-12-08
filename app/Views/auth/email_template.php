@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             <div style="background:#ededed;text-align:center!important;padding:16px 12px">
-                <img src="<?= base_url().'/assets/img/logo.png' ?>" style="height:50px;vertical-align:middle">
+                <img src="<?= base_url().'/assets/img/logo-kominfo.png' ?>" style="height:50px;vertical-align:middle">
             </div>
         </div>
     </div>

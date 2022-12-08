@@ -19,7 +19,7 @@ class Berita extends BaseController
      */
     public function index()
     {
-        $data['data'] = $this->model->findAll();
+        $data['data'] = $this->model->orderBy('created_at', 'DESC')->findAll();
         $data['name'] = $this->name;
         $data['route'] = $this->route;
         $data['title'] = 'Data ' . ucwords(str_replace('_', ' ', $this->name));
@@ -90,6 +90,60 @@ class Berita extends BaseController
                 'sumber'        => $this->request->getVar('sumber', $this->filter),
                 'img'           => $file_name,
             ];
+
+            // barchart
+            $barchart = model('Barchart')->orderBy('id','DESC')->first();
+            $bulan_sekarang = date('M Y');
+            switch ($field['id_kategori']) {
+                case 1:
+                    if ($barchart['bulan'] == $bulan_sekarang) {
+                        $plus_hoaks = $barchart['hoaks'] + 1;
+                    } else {
+                        $plus_hoaks = 1;
+                    }
+                    break;
+                case 2:
+                    if ($barchart['bulan'] == $bulan_sekarang) {
+                        $plus_fakta = $barchart['fakta'] + 1;
+                    } else {
+                        $plus_fakta = 1;
+                    }
+                    break;
+                case 3:
+                    if ($barchart['bulan'] == $bulan_sekarang) {
+                        $plus_disinformasi = $barchart['disinformasi'] + 1;
+                    } else {
+                        $plus_disinformasi = 1;
+                    }
+                    break;
+                case 4:
+                    if ($barchart['bulan'] == $bulan_sekarang) {
+                        $plus_hatespeech = $barchart['hate_speech'] + 1;
+                    } else {
+                        $plus_hatespeech = 1;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            if ($barchart['bulan'] == $bulan_sekarang) { // belum ganti bulan
+                $field_barchart = [
+                    'hoaks'         => $plus_hoaks ?? $barchart['hoaks'],
+                    'fakta'         => $plus_fakta ?? $barchart['fakta'],
+                    'disinformasi'  => $plus_disinformasi ?? $barchart['disinformasi'],
+                    'hate_speech'   => $plus_hatespeech ?? $barchart['hate_speech'],
+                ];
+                $this->barchart->update($barchart['id'], $field_barchart);
+            } else {
+                $field_barchart = [
+                    'bulan'         => $bulan_sekarang,
+                    'hoaks'         => $plus_hoaks ?? 0,
+                    'fakta'         => $plus_fakta ?? 0,
+                    'disinformasi'  => $plus_disinformasi ?? 0,
+                    'hate_speech'   => $plus_hatespeech ?? 0,
+                ];
+                $this->barchart->insert($field_barchart);
+            }
             
             // dd($field);
             $this->model->insert($field);
@@ -173,7 +227,75 @@ class Berita extends BaseController
                 'sumber'        => $this->request->getVar('sumber', $this->filter),
                 'img'           => $file_name,
             ];
+
+            // Ubah kategori
+            if ($field['id_kategori'] != $data['id_kategori']) {
+                // barchart by bulan
+                $barchart = model('Barchart')->where('bulan',date('M Y', strtotime($data['created_at'])))->first();
+                switch ($field['id_kategori']) {
+                    case 1: // ubah hoaks
+                        // +1
+                        $plus_hoaks = $barchart['hoaks'] + 1;
+                        // -1
+                        if ($data['id_kategori'] == 2) { // fakta
+                            $min_fakta = $barchart['fakta'] - 1;
+                        } elseif ($data['id_kategori'] == 3) { // disinformasi
+                            $min_disinformasi = $barchart['disinformasi'] - 1;
+                        } elseif ($data['id_kategori'] == 4) { // hate speech
+                            $min_hatespeech = $barchart['hate_speech'] - 1;
+                        }
+                        break;
+                    case 2: // ubah fakta
+                        // +1
+                        $plus_fakta = $barchart['fakta'] + 1;
+                        // -1
+                        if ($data['id_kategori'] == 1) { // hoaks
+                            $min_hoaks = $barchart['hoaks'] - 1;
+                        } elseif ($data['id_kategori'] == 3) { // disinformasi
+                            $min_disinformasi = $barchart['disinformasi'] - 1;
+                        } elseif ($data['id_kategori'] == 4) { // hate speech
+                            $min_hatespeech = $barchart['hate_speech'] - 1;
+                        }
+                        break;
+                    case 3: // ubah disinformasi
+                        // +1
+                        $plus_disinformasi = $barchart['disinformasi'] + 1;
+                        // -1
+                        if ($data['id_kategori'] == 2) { // fakta
+                            $min_fakta = $barchart['fakta'] - 1;
+                        } elseif ($data['id_kategori'] == 1) { // hoaks
+                            $min_hoaks = $barchart['hoaks'] - 1;
+                        } elseif ($data['id_kategori'] == 4) { // hate speech
+                            $min_hatespeech = $barchart['hate_speech'] - 1;
+                        }
+                        break;
+                    case 4: // ubah hatespeech
+                      // +1
+                      $plus_hatespeech = $barchart['hate_speech'] + 1;
+                      // -1
+                      if ($data['id_kategori'] == 2) { // fakta
+                          $min_fakta = $barchart['fakta'] - 1;
+                      } elseif ($data['id_kategori'] == 3) { // disinformasi
+                          $min_disinformasi = $barchart['disinformasi'] - 1;
+                      } elseif ($data['id_kategori'] == 1) { // hate speech
+                          $min_hoaks = $barchart['hoaks'] - 1;
+                      }
+                        break;
+                    default:
+                        break;
+                }
+                $field_barchart = [
+                    // 'bulan'         => date('M Y', strtotime($data['created_at'])),
+                    'hoaks'         => $plus_hoaks ?? $min_hoaks ?? $barchart['hoaks'],
+                    'fakta'         => $plus_fakta ?? $min_fakta ?? $barchart['fakta'],
+                    'disinformasi'  => $plus_disinformasi ?? $min_disinformasi ?? $barchart['disinformasi'],
+                    'hate_speech'   => $plus_hatespeech ?? $min_hatespeech ?? $barchart['hate_speech'],
+                ];
+                // dd($field_barchart);
+                $this->barchart->update($barchart['id'], $field_barchart);
+            }    
             
+            // die;
             // dd($field);
             $this->model->update($decode, $field);
             return redirect()->to($this->route)
@@ -203,6 +325,32 @@ class Berita extends BaseController
 
         $file = 'assets/img/'.$this->name.'/'.$data['img'];
         if (is_file($file)) unlink($file);
+
+        // barchart
+        $barchart = model('Barchart')->where('bulan',date('M Y', strtotime($data['created_at'])))->first();
+        switch ($data['id_kategori']) {
+            case 1:
+                $min_hoaks = $barchart['hoaks'] - 1;
+                break;
+            case 2:
+                $min_fakta = $barchart['fakta'] - 1;
+                break;
+            case 3:
+                $min_disinformasi = $barchart['disinformasi'] - 1;
+                break;
+            case 4:
+                $min_hatespeech = $barchart['hate_speech'] - 1;
+                break;
+            default:
+                break;
+        }
+        $field_barchart = [
+            'hoaks'         => $min_hoaks ?? $barchart['hoaks'],
+            'fakta'         => $min_fakta ?? $barchart['fakta'],
+            'disinformasi'  => $min_disinformasi ?? $barchart['disinformasi'],
+            'hate_speech'   => $min_hatespeech ?? $barchart['hate_speech'],
+        ];
+        $this->barchart->update($barchart['id'], $field_barchart);
 
         // die;
         $this->model->delete($decode);

@@ -31,6 +31,7 @@
                             <th>Sumber</th>
                             <th>Kategori</th>
                             <th>Platform</th>
+                            <th>Tanggal</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>
@@ -62,6 +63,7 @@
                                     echo $platform['nama'];
                                 ?>
                             </td>
+                            <td><?= date('d-m-Y H:i:s', strtotime($v['created_at'])) ?></td>
                             <td>
                                 <a href="<?= $route.'/edit/'.model('Env')->encode($v['id']) ?>">
                                     <i class="fa-regular fa-pen-to-square fa-lg me-2"></i>

@@ -5,44 +5,43 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <h5 class="fw-600">Platform peredaran berita</h5>
                         <div class="col-6">
                             <p class="text-center text-danger fw-500">Hoaks</p>
-                            <div class="chart chart-sm">
+                            <div class="">
                                 <canvas id="chartjs-pie"></canvas>
                             </div>
                         </div>
                         <div class="col-6">
                             <p class="text-center text-success fw-500">Fakta</p>
-                            <div class="chart chart-sm">
+                            <div class="">
                                 <canvas id="chartjs-pie2"></canvas>
                             </div>
                         </div>
-                        <div class="col-6 mt-3">
-                            <p class="text-center text-primary fw-500">Disinformasi</p>
-                            <div class="chart chart-sm">
+                        <div class="col-6">
+                            <p class="text-center text-primary fw-500 mt-3">Disinformasi</p>
+                            <div class="">
                                 <canvas id="chartjs-pie3"></canvas>
                             </div>
                         </div>
-                        <div class="col-6 mt-3">
-                            <p class="text-center text-warning fw-500">Hate Speech</p>
-                            <div class="chart chart-sm">
-                                <canvas id="chartjs-pie3"></canvas>
+                        <div class="col-6">
+                            <p class="text-center text-warning fw-500 mt-3">Hate Speech</p>
+                            <div class="">
+                                <canvas id="chartjs-pie4"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Bar Chart</h5>
-                    <h6 class="card-subtitle text-muted">Jumlah persebaran data per bulan</h6>
+                    <h5 class="fw-600">Jumlah persebaran data per bulan</h5>
                 </div>
                 <div class="card-body">
                     <div class="chart">
@@ -270,32 +269,76 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<?php
+    $barchart = model('Barchart')->orderBy('id','DESC')->findAll(12);
+?>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // Bar chart
     new Chart(document.getElementById("chartjs-bar"), {
         type: "bar",
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [{
-                label: "Last year",
-                backgroundColor: window.theme.primary,
-                borderColor: window.theme.primary,
-                hoverBackgroundColor: window.theme.primary,
-                hoverBorderColor: window.theme.primary,
-                data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-                barPercentage: .75,
-                categoryPercentage: .5
-            }, {
-                label: "This year",
-                backgroundColor: "#dee2e6",
-                borderColor: "#dee2e6",
-                hoverBackgroundColor: "#dee2e6",
-                hoverBorderColor: "#dee2e6",
-                data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
-                barPercentage: .75,
-                categoryPercentage: .5
-            }]
+            labels: [
+                <?php
+                    foreach ($barchart as $v) {
+                        echo '"'.$v['bulan'].'",';
+                    }    
+                ?>
+            ],
+            datasets: [
+                {
+                    label: "Hoaks",
+                    backgroundColor: window.theme.danger,
+                    data: [
+                        <?php
+                            foreach ($barchart as $v) {
+                                echo '"'.$v['hoaks'].'",';
+                            }    
+                        ?>
+                    ],
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                },
+                {
+                    label: "Fakta",
+                    backgroundColor: window.theme.success,
+                    data: [
+                        <?php
+                            foreach ($barchart as $v) {
+                                echo '"'.$v['fakta'].'",';
+                            }    
+                        ?>
+                    ],
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                },
+                {
+                    label: "Disinformasi",
+                    backgroundColor: window.theme.primary,
+                    data: [
+                        <?php
+                            foreach ($barchart as $v) {
+                                echo '"'.$v['disinformasi'].'",';
+                            }    
+                        ?>
+                    ],
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                },
+                {
+                    label: "Hate Speech",
+                    backgroundColor: window.theme.warning,
+                    data: [
+                        <?php
+                            foreach ($barchart as $v) {
+                                echo '"'.$v['hate_speech'].'",';
+                            }    
+                        ?>
+                    ],
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                },
+            ]
         },
         options: {
             maintainAspectRatio: false,

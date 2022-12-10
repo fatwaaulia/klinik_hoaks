@@ -14,6 +14,14 @@ class Landingpage extends BaseController
         $data['content'] = view('landingpage/home');
         return view('landingpage/header',$data);
     }
+    public function pengaduanKlarifikasi()
+    {
+        $data['title'] = 'Klarifikasi Pengaduan';
+        $data['val']     = service('validation');
+
+        $data['content'] = view('landingpage/pengaduan_klarifikasi',$data);
+        return view('landingpage/header',$data);
+    }
     public function subscribe()
     {
         $data['title'] = 'Subscribe';
@@ -88,50 +96,64 @@ class Landingpage extends BaseController
     public function deleteSubscribe($id)
     {
         $user = model('User')->where('email',$id)->first();
-        
-        // Kirim email
-        $toEmail  = $user['email'];
-        $toName   = $user['nama'];
-        $subject  = 'Berhenti Subscribe';
-        
-        $data['name'] = $toName;
-        $data['text'] = 'Yahh, kamu telah berhenti mengikuti ' . getenv('app.name') . '. jika kamu masih tertarik mendapatkan informasi terkini, silahkan subscribe ulang.';
-        $data['button_link'] = base_url('subscribe');
-        $data['button_name'] = 'Subscribe';
-        $message = view('auth/email_template', $data);
 
-        $email = service('email');
-        $email->setFrom($email->fromEmail, $email->fromName);
-        $email->setTo($toEmail);
-        $email->setSubject($subject);
-        $email->setMessage($message);
+        if ($user) {
+            // Kirim email
+            $toEmail  = $user['email'];
+            $toName   = $user['nama'];
+            $subject  = 'Berhenti Subscribe';
+            
+            $data['name'] = $toName;
+            $data['text'] = 'Yahh, kamu telah berhenti mengikuti ' . getenv('app.name') . '. jika kamu masih tertarik mendapatkan informasi terkini, silahkan subscribe ulang.';
+            $data['button_link'] = base_url('subscribe');
+            $data['button_name'] = 'Subscribe';
+            $message = view('auth/email_template', $data);
 
-        // print_r($message);
-        // die;
-        if ($email->send()) {
-            $this->model->delete($user['id']);
-            return redirect()->to(base_url())
-            ->with('message',
-            "<script>
-                Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Berhasil unsubscribe!',
-                })
-            </script>");
-        } else {
-            // $data = $email->printDebugger(['headers']);
-            // print_r($data);
+            $email = service('email');
+            $email->setFrom($email->fromEmail, $email->fromName);
+            $email->setTo($toEmail);
+            $email->setSubject($subject);
+            $email->setMessage($message);
+
+            // print_r($message);
             // die;
-            return redirect()->to(base_url())
-            ->with('message',
-            "<script>
-                Swal.fire({
-                position: 'top-end',
-                icon: 'info',
-                title: 'Permintaan gagal diproses, silakan coba lagi!',
-                })
-            </script>");
+            if ($email->send()) {
+                $this->model->delete($user['id']);
+                return redirect()->to(base_url())
+                ->with('message',
+                "<script>
+                    Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Berhasil unsubscribe!',
+                    })
+                </script>");
+            } else {
+                // $data = $email->printDebugger(['headers']);
+                // print_r($data);
+                // die;
+                return redirect()->to(base_url())
+                ->with('message',
+                "<script>
+                    Swal.fire({
+                    position: 'top-end',
+                    icon: 'info',
+                    title: 'Permintaan gagal diproses, silakan coba lagi!',
+                    })
+                </script>");
+            }
+        } else {
+            $data['title'] = '404';
+            $data['error_msg'] = 'GAGAL, SUBSCRIBER TIDAK DITEMUKAN!';
+        
+            $field = [
+                'ip_address' => getHostByName(getHostName()),
+                'url'        => current_url(),
+            ];
+            model('Handling_404')->insert($field);
+    
+            $data['content'] = view('errors/e404',$data);
+            return view('dashboard/header',$data);
         }
     }
 }

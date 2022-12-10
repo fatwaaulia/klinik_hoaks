@@ -42,7 +42,7 @@
                     <a class="nav-link active text-white" aria-current="page" href="#">Dokumen</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Klarifikasi Informasi</a>
+                    <a class="nav-link active text-white" aria-current="page" href="<?= base_url('pengaduan/klarifikasi') ?>">Klarifikasi Informasi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active text-white" aria-current="page" href="#">Kategori</a>

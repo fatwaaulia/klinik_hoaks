@@ -32,7 +32,6 @@ $routes->set404Override(
 
         $data['content'] = view('errors/e404');
         return view('dashboard/header',$data);
-
     }
 );
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
@@ -51,6 +50,10 @@ $routes->set404Override(
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Landingpage::home');
+
+// Pengaduan Masyarakat
+$routes->get('pengaduan/klarifikasi', 'Landingpage::pengaduanKlarifikasi');
+// Subscribe
 $routes->get('subscribe', 'Landingpage::subscribe');
 $routes->post('create-subscribe', 'Landingpage::createSubscribe');
 $routes->get('delete-subscribe/(:any)', 'Landingpage::deleteSubscribe/$1');
@@ -95,6 +98,15 @@ $routes->group('user', ['filter' => 'Superadmin'], static function ($routes) {
     $routes->post('update/(:segment)', 'User::update/$1');
     $routes->post('delete/(:segment)', 'User::delete/$1');
     $routes->post('delete-image/(:segment)', 'User::deleteImg/$1');
+});
+// Pengaduan
+$routes->group('pengaduan', static function ($routes) {
+    $routes->get('/', 'Pengaduan::index', ['filter' => 'Superadmin']);
+    // $routes->get('new', 'Pengaduan::new');
+    $routes->post('create', 'Pengaduan::create');
+    $routes->get('edit/(:segment)', 'Pengaduan::edit/$1', ['filter' => 'Superadmin']);
+    $routes->post('update/(:segment)', 'Pengaduan::update/$1', ['filter' => 'Superadmin']);
+    $routes->post('delete/(:segment)', 'Pengaduan::delete/$1', ['filter' => 'Superadmin']);
 });
 // Berita
 $routes->group('berita', ['filter' => 'Superadmin'], static function ($routes) {

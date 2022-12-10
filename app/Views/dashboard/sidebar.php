@@ -38,10 +38,10 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'   => ['1'],
 					],
 					[
-						'text'    => 'Pengajuan',
-						'url'     => 'dashboard',
+						'text'    => 'Pengaduan',
+						'url'     => 'pengaduan',
 						'icon'    => 'fa-regular fa-paper-plane',
-						'active'  => 'pengajuan',
+						'active'  => 'pengaduan',
 						'role'    => ['1'],
 					],
 					[

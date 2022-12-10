@@ -10,8 +10,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-9">
-                            <p class="fw-500 mb-2">Pengajuan</p>
-                            <h4 class="mb-0 fw-600">15</h4>
+                            <p class="fw-500 mb-2">Pengaduan</p>
+                            <h4 class="mb-0 fw-600"><?= count(model('Pengaduan')->where('id_berita =','')->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-warning position-relative">
                             <i class="fa-regular fa-paper-plane fa-2x position-absolute top-50 start-50 translate-middle"></i>

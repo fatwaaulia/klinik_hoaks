@@ -16,6 +16,8 @@
                     <?= $text ?? getenv('app.name') ?>
                 </p>
             </div>
+
+            <?php if($button_link != '') : ?>
             <div style="margin:2rem 0px">
                 <a href="<?= $button_link ?? getenv('app.name') ?>" target="_blank">
                     <button style="color:#fff;background:#3b7ddd;border:1px solid transparent;padding:0.375rem 0.75rem;font-size:1rem;border-radius:0.25rem;">
@@ -23,15 +25,20 @@
                     </button>
                 </a>
             </div>
+            <?php endif; ?>
+
             <div style="margin-bottom:2rem">
                 <p>Terima kasih, <br>
                     <?= getenv('app.name') ?>
                 </p>
             </div>
+
+            <?php if($button_link != '') : ?>
             <p>
                 Jika Anda mengalami masalah dengan menekan tombol "<?= $button_name ?? 'Tombol' ?>", salin dan tempel URL berikut ini di browser Anda:
                 <a href="<?= $button_link ?? getenv('app.name') ?>"><?= $button_link ?? getenv('app.name') ?></a>
             </p>
+            <?php endif; ?>
         </div>
     </div>
     <!-- Footer -->

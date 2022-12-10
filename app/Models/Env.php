@@ -25,6 +25,12 @@ class Env extends Model
         $random = substr(str_shuffle($char), 0, 32);
         return $random;
     }
+    public function randomNumeric()
+    {
+        $char = '1234567890123456789012345678901234567890';
+        $random = substr(str_shuffle($char), 0, 12);
+        return $random;
+    }
 
     public function slug($id)
     {

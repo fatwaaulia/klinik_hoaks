@@ -48,7 +48,7 @@
                     <a class="nav-link active text-white" aria-current="page" href="#">Kategori</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Lacak Tiket</a>
+                    <a class="nav-link active text-white" aria-current="page" href="<?= base_url('pengaduan/lacak-tiket') ?>">Lacak Tiket</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active text-white" aria-current="page" href="<?= base_url('subscribe') ?>">Subscribe</a>

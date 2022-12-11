@@ -53,6 +53,7 @@ $routes->get('/', 'Landingpage::home');
 
 // Pengaduan Masyarakat
 $routes->get('pengaduan/klarifikasi', 'Landingpage::pengaduanKlarifikasi');
+$routes->get('pengaduan/lacak-tiket', 'Landingpage::lacakTiket');
 // Subscribe
 $routes->get('subscribe', 'Landingpage::subscribe');
 $routes->post('create-subscribe', 'Landingpage::createSubscribe');

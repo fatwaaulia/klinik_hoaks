@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <?php
-    $berita_fakta = model('Berita')->joinKategori(3)->getResultArray();
+    $berita_fakta = model('Berita')->joinKategori(2)->getResultArray();
     
     $nama_platform_fakta = [];
     foreach ($berita_fakta as $v){
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <?php
-    $berita_disinformasi = model('Berita')->joinKategori(2)->getResultArray();
+    $berita_disinformasi = model('Berita')->joinKategori(3)->getResultArray();
     
     $nama_platform_disinformasi = [];
     foreach ($berita_disinformasi as $v){

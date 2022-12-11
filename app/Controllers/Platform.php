@@ -63,7 +63,7 @@ class Platform extends BaseController
     public function create()
     {
         $rules = [
-            'nama'          => 'required',
+            'nama'          => 'required|is_unique[platform.nama,id]',
         ];
         if (! $this->validate($rules)) {
             return redirect()->back()->withInput();
@@ -120,7 +120,7 @@ class Platform extends BaseController
         $data = $this->model->find($decode);
 
         $rules = [
-            'nama'          => 'required',
+            'nama'          => 'required|is_unique[platform.nama,id,'.$decode.']',
         ];
         if (! $this->validate($rules)) {
             return redirect()->back()->withInput();

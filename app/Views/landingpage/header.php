@@ -21,6 +21,13 @@
     <!-- SWEETALERT 2 -->
     <script src="<?=base_url().'/assets/js/sweetalert2.js' ?>"></script>
 
+    <style>
+    section {
+        margin-top:30px;
+        margin-bottom:30px;
+    }
+    </style>
+
 </head>
 
 <body>

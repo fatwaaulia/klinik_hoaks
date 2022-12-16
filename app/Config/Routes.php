@@ -110,13 +110,13 @@ $routes->group('pengaduan', static function ($routes) {
     $routes->post('delete/(:segment)', 'Pengaduan::delete/$1', ['filter' => 'Superadmin']);
 });
 // Berita
-$routes->group('berita', ['filter' => 'Superadmin'], static function ($routes) {
-    $routes->get('/', 'Berita::index');
-    $routes->get('new', 'Berita::new');
-    $routes->post('create', 'Berita::create');
-    $routes->get('edit/(:segment)', 'Berita::edit/$1');
-    $routes->post('update/(:segment)', 'Berita::update/$1');
-    $routes->post('delete/(:segment)', 'Berita::delete/$1');
+$routes->group('informasi', ['filter' => 'Superadmin'], static function ($routes) {
+    $routes->get('/', 'Informasi::index');
+    $routes->get('new', 'Informasi::new');
+    $routes->post('create', 'Informasi::create');
+    $routes->get('edit/(:segment)', 'Informasi::edit/$1');
+    $routes->post('update/(:segment)', 'Informasi::update/$1');
+    $routes->post('delete/(:segment)', 'Informasi::delete/$1');
 });
 // Platform
 $routes->group('platform', ['filter' => 'Superadmin'], static function ($routes) {

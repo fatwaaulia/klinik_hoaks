@@ -50,6 +50,8 @@ class Landingpage extends BaseController
             return redirect()->back()->withInput();
         }else {
             $berita = model('Berita')->orderBy('created_at', 'DESC')->first();
+            $kategori = model('Kategori')->where('id',$berita['id_kategori'])->first();
+
             $field = [
                 'id_role'       => '3',
                 'nama'          => $this->request->getVar('nama', $this->filter),
@@ -63,10 +65,13 @@ class Landingpage extends BaseController
             
             $data['name'] = $toName;
             $data['text'] = 'Terima kasih telah mengikuti ' . getenv('app.name') . '. kamu akan mendapat informasi terkini. 
-                            <br> baca: <a href="'.base_url().'">'.$berita['nama'].'</a>';
+                            <br> <br> '. $kategori['nama'].', '. $berita['nama'];
             $data['button_link'] = base_url().'/delete-subscribe/'. $toEmail;
             $data['button_name'] = 'Unsubscribe';
             $message = view('auth/email_template', $data);
+
+            // echo $message;
+            // die;
 
             $email = service('email');
             $email->setFrom($email->fromEmail, $email->fromName);

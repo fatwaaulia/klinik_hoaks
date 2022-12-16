@@ -4,12 +4,12 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class Berita extends BaseController
+class Informasi extends BaseController
 {
     public function __construct()
     {
-        $this->model = model('App\Models\Berita');
-        $this->name = 'berita'; // title, nama folder view. | spasi menggunakan garis bawah(_)
+        $this->model = model('App\Models\Informasi');
+        $this->name = 'Informasi'; // title, nama folder view. | spasi menggunakan garis bawah(_)
     }
 
     /**
@@ -65,7 +65,7 @@ class Berita extends BaseController
         $rules = [
             'id_kategori'   => 'required',
             'id_platform'   => 'required',
-            'nama'          => 'required|is_unique[berita.nama]',
+            'nama'          => 'required|is_unique[informasi.nama]',
             'img'           => 'max_size[img,1024]|ext_in[img,png,jpg,jpeg]',
             'sumber'        => 'required',
             'img'           => 'max_size[img,1024]|ext_in[img,png,jpg,jpeg]',
@@ -148,9 +148,10 @@ class Berita extends BaseController
             // dd($field);
             $this->model->insert($field);
 
-            $berita = $this->model->where('id', $this->model->getInsertID())->first();
+            $informasi = $this->model->where('id', $this->model->getInsertID())->first();
+            $kategori = model('Kategori')->where('id',$informasi['id_kategori'])->first();
 
-            // echo $berita['nama'];
+            // echo $informasi['nama'];
 
             // die;
             $subs = model('User')->where('id_role',3)->findAll();
@@ -158,10 +159,11 @@ class Berita extends BaseController
                 // Kirim email
                 $toEmail  = $v['email'];
                 $toName   = $v['nama'];
-                $subject  = 'Berita Terkini';
+                $subject  = 'Informasi Terkini';
                 
                 $data['name'] = $toName;
-                $data['text'] = 'Baca: <a href="'.base_url().'">'.$berita['nama'].'</a>';
+                $data['text'] = 'Informasi terkini. 
+                                <br> <br> '. $kategori['nama'].', '. $informasi['nama'];
                 $data['button_link'] = base_url().'/delete-subscribe/'. $toEmail;
                 $data['button_name'] = 'Unsubscribe';
                 $message = view('auth/email_template', $data);
@@ -237,7 +239,7 @@ class Berita extends BaseController
         $rules = [
             'id_kategori'   => 'required',
             'id_platform'   => 'required',
-            'nama'          => 'required|is_unique[berita.nama,id,'.$decode.']',
+            'nama'          => 'required|is_unique[informasi.nama,id,'.$decode.']',
             'img'           => 'max_size[img,1024]|ext_in[img,png,jpg,jpeg]',
             'sumber'        => 'required',
             'img'           => 'max_size[img,1024]|ext_in[img,png,jpg,jpeg]',

@@ -34,7 +34,7 @@
                         <tr>
                             <td><?= $key+1 ?></td>
                             <td>
-                                <?php if($v['id_berita']) { ?>
+                                <?php if($v['id_informasi']) { ?>
                                     <span class="text-success">Selesai diproses</span>
                                 <?php } else { ?>
                                     <span class="text-danger">belum diproses</span>

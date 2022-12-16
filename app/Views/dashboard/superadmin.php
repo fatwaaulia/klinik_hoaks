@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-9">
                             <p class="fw-500 mb-2">Pengaduan</p>
-                            <h4 class="mb-0 fw-600"><?= count(model('Pengaduan')->where('id_berita =','')->findAll()) ?></h4>
+                            <h4 class="mb-0 fw-600"><?= count(model('Pengaduan')->where('id_informasi =','')->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-warning position-relative">
                             <i class="fa-regular fa-paper-plane fa-2x position-absolute top-50 start-50 translate-middle"></i>
@@ -25,8 +25,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-9">
-                            <p class="fw-500 mb-2">Berita</p>
-                            <h4 class="mb-0 fw-600"><?= count(model('Berita')->findAll()) ?></h4>
+                            <p class="fw-500 mb-2">Informasi</p>
+                            <h4 class="mb-0 fw-600"><?= count(model('Informasi')->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-primary position-relative">
                             <i class="fa-solid fa-newspaper fa-2x position-absolute top-50 start-50 translate-middle"></i>
@@ -56,7 +56,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <h5 class="fw-600">Platform peredaran berita</h5>
+                        <h5 class="fw-600">Platform peredaran informasi</h5>
                         <div class="col-6">
                             <p class="text-center text-danger fw-500">Hoaks</p>
                             <div class="">
@@ -102,10 +102,10 @@
 </div>
 
 <?php
-    $berita_hoaks = model('Berita')->joinKategori(1)->getResultArray();
+    $informasi_hoaks = model('Informasi')->joinKategori(1)->getResultArray();
     
     $nama_platform_hoaks = [];
-    foreach ($berita_hoaks as $v){
+    foreach ($informasi_hoaks as $v){
         $platform = model('Platform')->where('id',$v['id_platform'])->first();
         $nama_platform_hoaks[]=$platform['nama'];
     }
@@ -158,10 +158,10 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <?php
-    $berita_fakta = model('Berita')->joinKategori(2)->getResultArray();
+    $informasi_fakta = model('Informasi')->joinKategori(2)->getResultArray();
     
     $nama_platform_fakta = [];
-    foreach ($berita_fakta as $v){
+    foreach ($informasi_fakta as $v){
         $platform = model('Platform')->where('id',$v['id_platform'])->first();
         $nama_platform_fakta[]=$platform['nama'];
     }
@@ -211,10 +211,10 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <?php
-    $berita_disinformasi = model('Berita')->joinKategori(3)->getResultArray();
+    $informasi_disinformasi = model('Informasi')->joinKategori(3)->getResultArray();
     
     $nama_platform_disinformasi = [];
-    foreach ($berita_disinformasi as $v){
+    foreach ($informasi_disinformasi as $v){
         $platform = model('Platform')->where('id',$v['id_platform'])->first();
         $nama_platform_disinformasi[]=$platform['nama'];
     }
@@ -264,10 +264,10 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <?php
-    $berita_hatespeech = model('Berita')->joinKategori(4)->getResultArray();
+    $informasi_hatespeech = model('Informasi')->joinKategori(4)->getResultArray();
     
     $nama_platform_hatespeech = [];
-    foreach ($berita_hatespeech as $v){
+    foreach ($informasi_hatespeech as $v){
         $platform = model('Platform')->where('id',$v['id_platform'])->first();
         $nama_platform_hatespeech[]=$platform['nama'];
     }

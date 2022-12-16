@@ -9,7 +9,7 @@ $user = model('User')->where('id', $user_session['id'])->first();
 	<nav id="sidebar" class="sidebar js-sidebar">
 		<div class="sidebar-content js-simplebar">
 			<a class="sidebar-brand" href="<?= base_url('dashboard') ?>">
-				<img src="<?= base_url().'/assets/img/logo-kominfo.png' ?>" class="w-100" alt="<?= getenv('app.name') ?>">
+				<img src="<?= base_url().'/assets/img/logo-seal.png' ?>" class="w-100" alt="<?= getenv('app.name') ?>">
 			</a>
 
 			<ul class="sidebar-nav">
@@ -49,10 +49,10 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'   => ['1'],
 					],
 					[
-						'text'    => 'Berita',
-						'url'     => 'berita',
+						'text'    => 'Informasi',
+						'url'     => 'informasi',
 						'icon'    => 'fa-solid fa-newspaper',
-						'active'  => 'berita',
+						'active'  => 'informasi',
 						'role'    => ['1'],
 					],
 					[

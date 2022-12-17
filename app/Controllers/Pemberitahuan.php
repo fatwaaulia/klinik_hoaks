@@ -79,7 +79,7 @@ class Pemberitahuan extends BaseController
         ];
 
         // die;
-        $subs = model('Subscriber')->findAll();
+        $subs = model('Subscriber')->where('ubsubscribe !=', NULL)->findAll();
         foreach ($subs as $v) {
             // Kirim email
             $toEmail  = $v['email'];

@@ -14,7 +14,7 @@
                             <h4 class="mb-0 fw-600"><?= count(model('Pengaduan')->where('id_informasi =','')->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-warning position-relative">
-                            <i class="fa-regular fa-paper-plane fa-2x position-absolute top-50 start-50 translate-middle"></i>
+                            <i class="fa-solid fa-clipboard-question fa-2x position-absolute top-50 start-50 translate-middle"></i>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                             <h4 class="mb-0 fw-600"><?= count(model('Subscriber')->where('unsubscribe_at',NULL)->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-success position-relative">
-                            <i class="fa-solid fa-check fa-2x position-absolute top-50 start-50 translate-middle"></i>
+                            <i class="fa-regular fa-bell fa-2x position-absolute top-50 start-50 translate-middle"></i>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                             <h4 class="mb-0 fw-600"><?= count(model('Subscriber')->where('unsubscribe_at !=',NULL)->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-danger position-relative">
-                            <i class="fa-solid fa-xmark fa-2x position-absolute top-50 start-50 translate-middle"></i>
+                            <i class="fa-regular fa-bell-slash fa-2x position-absolute top-50 start-50 translate-middle"></i>
                         </div>
                     </div>
                 </div>

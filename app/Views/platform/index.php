@@ -26,7 +26,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama</th>
+                            <th>Nama Platform</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>

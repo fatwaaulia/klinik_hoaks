@@ -57,6 +57,6 @@ abstract class BaseController extends Controller
             $this->user_session = model('User')->where('id', $user_session['id'])->first();
         }
         // Tabel
-        $this->barchart = model('Barchart');
+        $this->linechart = model('Linechart');
     }
 }

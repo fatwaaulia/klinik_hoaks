@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Barchart extends Model
+class Linechart extends Model
 {
-    protected $table = 'barchart';
+    protected $table = 'linechart';
     protected $allowedFields = [
         'bulan',
         'hoaks',

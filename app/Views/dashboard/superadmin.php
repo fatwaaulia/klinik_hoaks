@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-9">
                             <p class="fw-500 mb-2">Subscriber</p>
-                            <h4 class="mb-0 fw-600">29</h4>
+                            <h4 class="mb-0 fw-600"><?= count(model('Subscriber')->where('unsubscribe_at',NULL)->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-success position-relative">
                             <i class="fa-solid fa-check fa-2x position-absolute top-50 start-50 translate-middle"></i>
@@ -56,7 +56,7 @@
                     <div class="row">
                         <div class="col-9">
                             <p class="fw-500 mb-2">Unsubscriber</p>
-                            <h4 class="mb-0 fw-600">29</h4>
+                            <h4 class="mb-0 fw-600"><?= count(model('Subscriber')->where('unsubscribe_at !=',NULL)->findAll()) ?></h4>
                         </div>
                         <div class="col-3 text-end text-danger position-relative">
                             <i class="fa-solid fa-xmark fa-2x position-absolute top-50 start-50 translate-middle"></i>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart">
-                        <canvas id="chartjs-bar"></canvas>
+                        <canvas id="chartjs-line"></canvas>
                     </div>
                 </div>
             </div>
@@ -331,100 +331,113 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+
 <?php
-    $barchart = model('Barchart')->findAll(12);
+    $linechart = model('Linechart')->findAll(12);
 ?>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Bar chart
-    new Chart(document.getElementById("chartjs-bar"), {
-        type: "bar",
-        data: {
-            labels: [
-                <?php
-                    foreach ($barchart as $v) {
-                        echo '"'.$v['bulan'].'",';
-                    }    
-                ?>
-            ],
-            datasets: [
-                {
+        // Line chart
+        new Chart(document.getElementById("chartjs-line"), {
+            type: "line",
+            data: {
+                labels: [
+                    <?php
+                        foreach ($linechart as $v) {
+                            echo '"'.$v['bulan'].'",';
+                        }    
+                    ?>
+                ],
+                datasets: [{
                     label: "Hoaks",
-                    backgroundColor: window.theme.danger,
-                    data: [
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.danger,
+                    data: [ 
                         <?php
-                            foreach ($barchart as $v) {
+                            foreach ($linechart as $v) {
                                 echo '"'.$v['hoaks'].'",';
-                            }    
+                            }   
                         ?>
                     ],
-                    barPercentage: .75,
-                    categoryPercentage: .5
                 },
                 {
                     label: "Fakta",
-                    backgroundColor: window.theme.success,
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.success,
                     data: [
                         <?php
-                            foreach ($barchart as $v) {
+                            foreach ($linechart as $v) {
                                 echo '"'.$v['fakta'].'",';
                             }    
                         ?>
-                    ],
-                    barPercentage: .75,
-                    categoryPercentage: .5
+                    ]
                 },
                 {
                     label: "Disinformasi",
-                    backgroundColor: window.theme.primary,
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.primary,
                     data: [
                         <?php
-                            foreach ($barchart as $v) {
+                            foreach ($linechart as $v) {
                                 echo '"'.$v['disinformasi'].'",';
                             }    
                         ?>
-                    ],
-                    barPercentage: .75,
-                    categoryPercentage: .5
+                    ]
                 },
                 {
                     label: "Hate Speech",
-                    backgroundColor: window.theme.warning,
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.warning,
                     data: [
                         <?php
-                            foreach ($barchart as $v) {
+                            foreach ($linechart as $v) {
                                 echo '"'.$v['hate_speech'].'",';
                             }    
                         ?>
-                    ],
-                    barPercentage: .75,
-                    categoryPercentage: .5
-                },
+                    ]
+                }
             ]
-        },
-        options: {
-            maintainAspectRatio: false,
-            legend: {
-                display: false
             },
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        display: false
-                    },
-                    stacked: false,
-                    ticks: {
-                        stepSize: 20
+            options: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    intersect: false
+                },
+                hover: {
+                    intersect: true
+                },
+                plugins: {
+                    filler: {
+                        propagate: false
                     }
-                }],
-                xAxes: [{
-                    stacked: false,
-                    gridLines: {
-                        color: "transparent"
-                    }
-                }]
+                },
+                scales: {
+                    xAxes: [{
+                        reverse: true,
+                        gridLines: {
+                            color: "rgba(0,0,0,0.05)"
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 500
+                        },
+                        display: true,
+                        borderDash: [5, 5],
+                        gridLines: {
+                            color: "rgba(0,0,0,0)",
+                            fontColor: "#fff"
+                        }
+                    }]
+                }
             }
-        }
+        });
     });
-});
 </script>

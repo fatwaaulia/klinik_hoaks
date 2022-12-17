@@ -27,7 +27,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Gambar</th>
-                            <th>Nama Berita</th>
+                            <th>Nama Informasi</th>
                             <th>Sumber</th>
                             <th>Kategori</th>
                             <th>Platform</th>

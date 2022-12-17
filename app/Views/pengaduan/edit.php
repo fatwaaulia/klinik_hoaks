@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Kode</label>
+                                    <label for="nama" class="form-label">Tiket</label>
                                     <input type="text" class="form-control" value="<?= $data['kode'] ?>" id="kode" disabled>
                                 </div>
                                 <div class="mb-3">
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label for="deskripsi" class="form-label">Isi Laporan</label>
+                                    <label for="deskripsi" class="form-label">Isi Pengaduan</label>
                                     <textarea class="form-control <?= $val->hasError('deskripsi') ? "is-invalid" : '' ?>" id="deskripsi" rows="3" disabled><?= $data['deskripsi'] ?></textarea>
                                 </div>
                                 <div class="mb-3">
@@ -66,13 +66,13 @@
                                 <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script>
 
                                 <div class="mb-3">
-                                    <label for="id_role" class="form-label">Status</label> <span class="text-secondary">Pilih berita untuk klarifikasi</span>
-                                    <select class="form-select <?= $val->hasError('id_berita') ? "is-invalid" : '' ?>" name="id_berita" id="select_box">
-                                    <option value="">-Pilih Berita-</option>
+                                    <label for="id_role" class="form-label">Status</label> <span class="text-secondary">Pilih informasi untuk klarifikasi</span>
+                                    <select class="form-select <?= $val->hasError('id_informasi') ? "is-invalid" : '' ?>" name="id_informasi" id="select_box">
+                                    <option value="">-Pilih Informasi-</option>
                                         <?php
-                                        $role = model('Berita')->orderBy('id','DESC')->findAll();
+                                        $role = model('Informasi')->orderBy('id','DESC')->findAll();
                                         foreach ($role as $v) : 
-                                            if ($data['id_berita'] == $v['id']) {
+                                            if ($data['id_informasi'] == $v['id']) {
                                                 $selected = 'selected';
                                             } else {
                                                 $selected = '';
@@ -82,7 +82,7 @@
                                         <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $val->getError('id_berita') ?>
+                                        <?= $val->getError('id_informasi') ?>
                                     </div>
                                 </div>
 

@@ -41,8 +41,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama Berita</label>
-                                    <input type="text" class="form-control <?= $val->hasError('nama') ? "is-invalid" : '' ?>" name="nama" id="nama" value="<?= old('nama') ?>" placeholder="Masukkan nama berita">
+                                    <label for="nama" class="form-label">Nama Informasi</label>
+                                    <input type="text" class="form-control <?= $val->hasError('nama') ? "is-invalid" : '' ?>" name="nama" id="nama" value="<?= old('nama') ?>" placeholder="Masukkan nama informasi">
                                     <div class="invalid-feedback">
                                         <?= $val->getError('nama') ?>
                                     </div>

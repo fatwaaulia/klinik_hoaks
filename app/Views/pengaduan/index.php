@@ -23,7 +23,7 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Telepon</th>
-                            <th>Isi Laporan</th>
+                            <th>Isi Pengaduan</th>
                             <th>Sumber</th>
                             <th>Tanggal</th>
                             <th>Opsi</th>

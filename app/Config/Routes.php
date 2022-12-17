@@ -50,6 +50,7 @@ $routes->set404Override(
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Landingpage::home');
+$routes->get('subscribe', 'Landingpage::subscribe');
 
 // Pengaduan Masyarakat
 $routes->get('pengaduan/klarifikasi', 'Landingpage::pengaduanKlarifikasi');
@@ -123,7 +124,15 @@ $routes->group('platform', ['filter' => 'Superadmin'], static function ($routes)
     $routes->post('update/(:segment)', 'Platform::update/$1');
     $routes->post('delete/(:segment)', 'Platform::delete/$1');
 });
-
+// Pemberitahuan
+$routes->group('pemberitahuan', ['filter' => 'Superadmin'], static function ($routes) {
+    $routes->get('/', 'Pemberitahuan::index');
+    $routes->get('new', 'Pemberitahuan::new');
+    $routes->post('create', 'Pemberitahuan::create');
+    $routes->get('edit/(:segment)', 'Pemberitahuan::edit/$1');
+    $routes->post('update/(:segment)', 'Pemberitahuan::update/$1');
+    $routes->post('delete/(:segment)', 'Pemberitahuan::delete/$1');
+});
 // Subscriber
 $routes->get('unsubscriber', 'Subscriber::unsubscriber', ['filter' => 'Superadmin']);
 $routes->group('subscriber', static function ($routes) {

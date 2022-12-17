@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
             <div style="background:#ededed;text-align:center!important;padding:16px 12px">
-                <img src="<?= base_url().'/assets/img/logo-kominfo.png' ?>" style="height:50px;vertical-align:middle">
+                <img src="https://seal.or.id/assets/img/logo-seal.png" style="height:50px;vertical-align:middle">
             </div>
         </div>
     </div>
@@ -11,7 +11,7 @@
     <div class="row" style="padding:20px 12px">
         <div class="col-md-12">
             <div>
-                <p>Hai, <?= $name ?? 'Pengguna' ?></p>
+                <p>Hai <?= $name ?? 'Pengguna' ?>,</p>
                 <p>
                     <?= $text ?? getenv('app.name') ?>
                 </p>
@@ -39,6 +39,14 @@
                 <a href="<?= $button_link ?? getenv('app.name') ?>"><?= $button_link ?? getenv('app.name') ?></a>
             </p>
             <?php endif; ?>
+
+            <?php if($text_2 != '') : ?>
+            <p style="font-size:14px;color:grey">
+                <?= $text_2 ?>
+            </p>
+            <?php endif; ?>
+
+
         </div>
     </div>
     <!-- Footer -->

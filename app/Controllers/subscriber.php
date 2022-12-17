@@ -99,12 +99,16 @@ class Subscriber extends BaseController
             // Kirim email
             $toEmail  = $field['email'];
             $toName   = $field['nama'];
-            $subject  = 'Berhasil Subscribe';
+            $subject  = 'Selamat Datang di Klinik Hoaks!';
             
             $data['name'] = $toName;
-            $data['text'] = 'Terima kasih telah mengikuti ' . getenv('app.name') . '. kamu akan mendapat informasi terkini.';
-            $data['button_link'] = base_url().'/subscriber/delete/'. $toEmail;
-            $data['button_name'] = 'Unsubscribe';
+            $data['text'] = 'Terima kasih telah berlangganan newsletter ' . getenv('app.name') . '. Anda akan mendapatkan informasi terkini.';
+            $data['text_2'] = 'Jika Anda ingin berhenti berlangganan, silakan klik tombol berikut: <a href='. base_url().'/subscriber/delete/'. $toEmail .'>
+                                <button style="color:#fff;background:#3b7ddd;border:1px solid transparent;padding:0.375rem 0.75rem;font-size:14px;border-radius:0.25rem;">
+                                    Unsubscribe
+                                </button></a>';
+            $data['button_link'] = '';
+            $data['button_name'] = '';
             $message = view('auth/email_template', $data);
 
             // echo $message;
@@ -182,12 +186,16 @@ class Subscriber extends BaseController
             // Kirim email
             $toEmail  = $subscribe['email'];
             $toName   = $subscribe['nama'];
-            $subject  = 'Berhenti Subscribe';
+            $subject  = 'Langganan Klinik Hoaks Telah Dihentikan!';
             
             $data['name'] = $toName;
-            $data['text'] = 'Yahh, kamu telah berhenti mengikuti ' . getenv('app.name') . '. jika kamu masih tertarik mendapatkan informasi terkini, silahkan subscribe ulang.';
-            $data['button_link'] = base_url('subscribe');
-            $data['button_name'] = 'Subscribe';
+            $data['text'] = 'Permohonan berhenti berlangganan newsletter ' . getenv('app.name') . ' telah berhasil. Anda tidak akan mendapatkan informasi terkini lagi.';
+            $data['text_2'] = 'Jika Anda ingin kembali berlangganan, silakan klik tombol berikut: <a href='. base_url().'/subscribe'.'>
+                                <button style="color:#fff;background:#3b7ddd;border:1px solid transparent;padding:0.375rem 0.75rem;font-size:14px;border-radius:0.25rem;">
+                                    Subscribe
+                                </button></a>';
+            $data['button_link'] = '';
+            $data['button_name'] = '';
             $message = view('auth/email_template', $data);
 
             $email = service('email');

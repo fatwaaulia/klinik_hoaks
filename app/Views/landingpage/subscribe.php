@@ -11,7 +11,7 @@
                     <form action="<?= base_url('subscriber/create') ?>" method="post">
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control <?= $val->hasError('nama') ? "is-invalid" : '' ?>" name="nama" id="nama" value="<?= old('nama') ?>" placeholder="Masukkan namamu">
+                            <input type="text" class="form-control <?= $val->hasError('nama') ? "is-invalid" : '' ?>" name="nama" id="nama" value="<?= old('nama') ?>" placeholder="Masukkan nama anda">
                             <div class="invalid-feedback">
                                 <?= $val->getError('nama') ?>
                             </div>

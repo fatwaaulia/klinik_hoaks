@@ -20,7 +20,7 @@
                             <th>No.</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Tanggal</th>
+                            <th>Tanggal Berhenti</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,7 +29,7 @@
                             <td><?= $key+1 ?></td>
                             <td><?= $v['nama'] ?></td>
                             <td><?= $v['email'] ?></td>
-                            <td><?= date('d-m-Y H:i:s', strtotime($v['created_at'])) ?></td>
+                            <td><?= date('d-m-Y H:i:s', strtotime($v['unsubscribe_at'])) ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

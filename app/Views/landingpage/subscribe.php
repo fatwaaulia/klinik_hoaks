@@ -8,7 +8,7 @@
                         <h2 class="fw-600">Subscribe</h2>
                         <p class="text-muted">Silahkan langganan untuk mendapatkan update berita!</p>
                     </div>
-                    <form action="<?= base_url('create-subscribe') ?>" method="post">
+                    <form action="<?= base_url('subscriber/create') ?>" method="post">
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama Lengkap</label>
                             <input type="text" class="form-control <?= $val->hasError('nama') ? "is-invalid" : '' ?>" name="nama" id="nama" value="<?= old('nama') ?>" placeholder="Masukkan namamu">

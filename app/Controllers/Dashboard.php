@@ -24,14 +24,4 @@ class Dashboard extends Controller
         $data['sidebar'] = view('dashboard/sidebar',$data);
         return view('dashboard/header',$data);
     }
-
-    public function subscriber()
-    {
-        $data['data'] = model('User')->where('id_role',3)->findAll();
-        $data['title'] = 'Data Subscriber';
-
-        $data['content'] = view('dashboard/subscriber',$data);
-        $data['sidebar'] = view('dashboard/sidebar',$data);
-        return view('dashboard/header',$data);
-    }
 }

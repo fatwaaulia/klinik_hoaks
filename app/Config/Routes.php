@@ -54,10 +54,6 @@ $routes->get('/', 'Landingpage::home');
 // Pengaduan Masyarakat
 $routes->get('pengaduan/klarifikasi', 'Landingpage::pengaduanKlarifikasi');
 $routes->get('pengaduan/lacak-tiket', 'Landingpage::lacakTiket');
-// Subscribe
-$routes->get('subscribe', 'Landingpage::subscribe');
-$routes->post('create-subscribe', 'Landingpage::createSubscribe');
-$routes->get('delete-subscribe/(:any)', 'Landingpage::deleteSubscribe/$1');
 
 // AUTENTIKASI
 // Login
@@ -109,7 +105,7 @@ $routes->group('pengaduan', static function ($routes) {
     $routes->post('update/(:segment)', 'Pengaduan::update/$1', ['filter' => 'Superadmin']);
     $routes->post('delete/(:segment)', 'Pengaduan::delete/$1', ['filter' => 'Superadmin']);
 });
-// Berita
+// Informasi
 $routes->group('informasi', ['filter' => 'Superadmin'], static function ($routes) {
     $routes->get('/', 'Informasi::index');
     $routes->get('new', 'Informasi::new');
@@ -127,7 +123,17 @@ $routes->group('platform', ['filter' => 'Superadmin'], static function ($routes)
     $routes->post('update/(:segment)', 'Platform::update/$1');
     $routes->post('delete/(:segment)', 'Platform::delete/$1');
 });
-$routes->get('subscriber', 'Dashboard::subscriber', ['filter' => 'Superadmin']);
+
+// Subscriber
+$routes->get('unsubscriber', 'Subscriber::unsubscriber', ['filter' => 'Superadmin']);
+$routes->group('subscriber', static function ($routes) {
+    $routes->get('/', 'Subscriber::index', ['filter' => 'Superadmin']);
+    $routes->get('new', 'Subscriber::new');
+    $routes->post('create', 'Subscriber::create');
+    // $routes->get('edit/(:segment)', 'Platform::edit/$1');
+    // $routes->post('update/(:segment)', 'Platform::update/$1');
+    $routes->get('delete/(:segment)', 'Subscriber::delete/$1');
+});
 // Handling 404
 $routes->group('handling-404', ['filter' => 'Superadmin'], static function ($routes) {
     $routes->get('/', 'Handling_404::index');

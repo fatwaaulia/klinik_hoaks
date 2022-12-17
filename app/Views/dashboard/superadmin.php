@@ -50,6 +50,21 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="fw-500 mb-2">Unsubscriber</p>
+                            <h4 class="mb-0 fw-600">29</h4>
+                        </div>
+                        <div class="col-3 text-end text-danger position-relative">
+                            <i class="fa-solid fa-xmark fa-2x position-absolute top-50 start-50 translate-middle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-4">
@@ -317,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <?php
-    $barchart = model('Barchart')->orderBy('id','DESC')->findAll(12);
+    $barchart = model('Barchart')->findAll(12);
 ?>
 <script>
 document.addEventListener("DOMContentLoaded", function() {

@@ -11,7 +11,7 @@
     <div class="row" style="padding:20px 12px">
         <div class="col-md-12">
             <div>
-                <p>Hai, <b> <?= $name ?? 'Pengguna' ?>!</b></p>
+                <p>Hai, <?= $name ?? 'Pengguna' ?></p>
                 <p>
                     <?= $text ?? getenv('app.name') ?>
                 </p>

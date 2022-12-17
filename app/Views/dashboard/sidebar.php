@@ -34,7 +34,7 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'    => ['1'],
 					],
 					[
-						'text'    => 'VALIDASI BERITA',
+						'text'    => 'VALIDASI INFORMASI',
 						'role'   => ['1'],
 					],
 					[
@@ -45,7 +45,7 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'    => ['1'],
 					],
 					[
-						'text'    => 'BERITA',
+						'text'    => 'INFORMASI',
 						'role'   => ['1'],
 					],
 					[
@@ -63,10 +63,21 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'    => ['1'],
 					],
 					[
+						'text'    => 'PELANGGAN',
+						'role'   => ['1'],
+					],
+					[
 						'text'    => 'Subscriber',
 						'url'     => 'subscriber',
 						'icon'    => 'fa-solid fa-check',
 						'active'  => 'subscriber',
+						'role'    => ['1'],
+					],
+					[
+						'text'    => 'Unsubscriber',
+						'url'     => 'unsubscriber',
+						'icon'    => 'fa-solid fa-xmark',
+						'active'  => 'unsubscriber',
 						'role'    => ['1'],
 					],
 					[

@@ -1,14 +1,27 @@
 <section style="margin-top:100px">
 <div class="container">
-    <div class="row mb-4">
+    <div class="row mb-2">
         <div class="col-lg-12">
             <?php $kategori = model('Kategori')->where('slug', service('uri')->getSegment(2))->first(); ?>
-            <h3 class="text-center fw-600">Informasi <?= $kategori['nama'] ?> Terkini</h3>
+            <h3 class="text-center fw-600">Pencarian Informasi</h3>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-12">
+            <div class="position-relative mt-4">
+                <form action="<?= base_url().'/pencarian' ?>" method="get">
+                    <input type="text" class="form-control p-4" name="kata_kunci" value="<?= $_GET['kata_kunci'] ?>" style="border-radius:50px" placeholder="Cari informasi disini.." required>
+                    <button type="submit" class="btn btn-primary position-absolute" style="right:30px;top:13px;border-radius:50px">
+                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+                    </button>
+                </form>
+            </div>
+            <?php $informasi = model('Informasi')->like('nama',$_GET['kata_kunci'])->findAll(); ?>
+            <p class="mt-3 fw-600 <?= count($informasi) > 0 ? 'text-success':'text-danger' ?>"><?= count($informasi) ?> informasi ditemukan</p>
         </div>
     </div>
     <div class="row">
         <?php 
-            $informasi = model('Informasi')->where('id_kategori', $kategori['id'])->orderBy('id', 'DESC')->findAll();
             foreach ($informasi as $v) :
         ?>
         <div class="col-lg-4 konten">

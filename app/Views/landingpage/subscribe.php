@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <h2 class="fw-600">Subscribe</h2>
-                        <p class="text-muted">Silahkan langganan untuk mendapatkan update berita!</p>
+                        <p class="text-muted">Silahkan langganan untuk mendapatkan update informasi terkini!</p>
                     </div>
                     <form action="<?= base_url('subscriber/create') ?>" method="post">
                         <div class="mb-3">

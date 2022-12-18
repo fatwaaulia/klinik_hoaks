@@ -67,7 +67,7 @@
                         $kategori = model('Kategori')->findAll();
                         foreach ($kategori as $v) :
                         ?>
-                        <li><a class="dropdown-item" href="<?= base_url().'/kategori/'.$v['nama'] ?>"><?= $v['nama'] ?></a></li>
+                        <li><a class="dropdown-item" href="<?= base_url().'/kategori/'.$v['slug'] ?>"><?= $v['nama'] ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>

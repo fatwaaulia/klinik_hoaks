@@ -20,8 +20,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="position-relative mt-4">
-                    <form action="#" method="get">
-                        <input type="text" class="form-control p-4" style="border-radius:50px" placeholder="Cari informasi disini..">
+                    <form action="<?= base_url().'/pencarian' ?>" method="get">
+                        <input type="text" class="form-control p-4" name="kata_kunci" style="border-radius:50px" placeholder="Cari informasi disini.." required>
                         <button type="submit" class="btn btn-primary position-absolute" style="right:30px;top:13px;border-radius:50px">
                             <i class="fa-solid fa-magnifying-glass fa-2x"></i>
                         </button>

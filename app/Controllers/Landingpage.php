@@ -23,12 +23,23 @@ class Landingpage extends BaseController
         $data['content'] = view('landingpage/pengaduan_klarifikasi',$data);
         return view('landingpage/header',$data);
     }
-    public function kategori()
+
+    public function kategori($id)
     {
-        $data['title'] = 'Klarifikasi Pengaduan';
+        $kategori = model('Kategori')->where('slug', $id)->first();
+        $data['title'] = 'Kategori '. $kategori['nama'];
         $data['val']     = service('validation');
 
         $data['content'] = view('landingpage/kategori',$data);
+        return view('landingpage/header',$data);
+    }
+
+    public function pencarian()
+    {
+        $data['title'] = 'Pencarian';
+        $data['val']     = service('validation');
+
+        $data['content'] = view('landingpage/pencarian',$data);
         return view('landingpage/header',$data);
     }
 

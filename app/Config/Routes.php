@@ -43,6 +43,7 @@ $routes->set404Override(
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Landingpage::home');
+$routes->get('kategori/(:any)', 'Landingpage::kategori/$1');
 $routes->get('subscribe', 'Landingpage::subscribe');
 
 // Pengaduan Masyarakat

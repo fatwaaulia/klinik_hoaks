@@ -37,8 +37,9 @@
                 <img src="<?= base_url().'/assets/img/logo_provinsi_jawa_timur.png' ?>" style="width:30px" alt="<?= getenv('app.name') ?>">
                 <span class="ms-2 text-white fw-500">Klinik Hoaks</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
@@ -62,10 +63,12 @@
                         Kategori
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Hoaks</a></li>
-                        <li><a class="dropdown-item" href="#">Fakta</a></li>
-                        <li><a class="dropdown-item" href="#">Disinformasi</a></li>
-                        <li><a class="dropdown-item" href="#">Hate Speech</a></li>
+                        <?php
+                        $kategori = model('Kategori')->findAll();
+                        foreach ($kategori as $v) :
+                        ?>
+                        <li><a class="dropdown-item" href="<?= base_url().'/kategori/'.$v['nama'] ?>"><?= $v['nama'] ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
                 <li class="nav-item">

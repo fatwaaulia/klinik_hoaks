@@ -1,8 +1,15 @@
-<div class="container-fluid" style="background:#131F71;height:50vh;border-radius:0 0 70px 70px">
+<div class="container-fluid img-style" style="background-image:url('<?= base_url().'/assets/img/header-beranda.png' ?>');height:50vh;border-radius:0 0 70px 70px">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 text-white">
-                <h1 class="fw-600 mt-5">Cari Fakta <br> atau Hoaks</h1>
+                <h1 class="fw-600 mt-5 yay" style="font-size:60px">Cari Fakta <br> atau Hoaks</h1>
+                <style>
+                @media (max-width: 576px) { 
+                    .yay {
+                        font-size:40px!important;
+                    }
+                 }
+                </style>
                 <p>Berantas hoaks mulai sekarang!</p>
             </div>
             <div class="col-lg-8">
@@ -12,7 +19,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="position-relative mt-5">
+                <div class="position-relative mt-4">
                     <form action="#" method="get">
                         <input type="text" class="form-control p-4" style="border-radius:50px" placeholder="Cari informasi disini..">
                         <button type="submit" class="btn btn-primary position-absolute" style="right:30px;top:13px;border-radius:50px">
@@ -31,13 +38,13 @@
         <div class="col-lg-12">
             <div class="card bg-danger">
                 <div class="card-body">
-                    <div class="row text-white py-5">
+                    <div class="row text-white pt-5 pb-1">
                         <div class="col-md-6 text-center">
                             <i class="fa-solid fa-person-circle-question" style="font-size:100px"></i>
                             <h4 class="fw-600 mt-5">Cek Klarifikasi Informasi</h4>
                             <p>Yuk, cek kebenaran informasi disini!</p>
                             <a href="<?= base_url('pengaduan/klarifikasi') ?>">
-                                <button class="btn btn-secondary rounded-circle">
+                                <button class="btn btn-secondary rounded-circle mb-4">
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </a>
@@ -47,7 +54,7 @@
                             <h4 class="fw-600 mt-5">Lacak Tiket</h4>
                             <p>Lacak tiket permohonan klarifikasi informasi disini!</p>
                             <a href="<?= base_url('pengaduan/lacak-tiket') ?>">
-                                <button class="btn btn-secondary rounded-circle">
+                                <button class="btn btn-secondary rounded-circle mb-4">
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </a>

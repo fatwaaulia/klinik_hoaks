@@ -23,6 +23,15 @@ class Landingpage extends BaseController
         $data['content'] = view('landingpage/pengaduan_klarifikasi',$data);
         return view('landingpage/header',$data);
     }
+    public function kategori()
+    {
+        $data['title'] = 'Klarifikasi Pengaduan';
+        $data['val']     = service('validation');
+
+        $data['content'] = view('landingpage/kategori',$data);
+        return view('landingpage/header',$data);
+    }
+
     public function lacakTiket()
     {
         $data['title'] = 'Lacak Tiket';

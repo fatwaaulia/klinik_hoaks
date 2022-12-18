@@ -1,4 +1,4 @@
-<section>
+<section style="margin-top:100px">
 <div class="container">
     <div class="row">
         <div class="offset-lg-3 offset-lg-3 col-lg-6">
@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <h2 class="fw-600">Permohonan Klarifikasi Informasi</h2>
-                        <p class="text-muted">Silahkan ...!</p>
+                        <p class="text-muted">Kirimkan detail informasi yang kamu dapat, akan kami bantu cari klarifikasinya dalam 1x24 jam.</p>
                     </div>
                     <form action="<?= base_url('pengaduan/create') ?>" method="post" enctype="multipart/form-data">
                         <div class="mb-3">

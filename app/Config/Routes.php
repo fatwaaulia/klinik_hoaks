@@ -23,13 +23,6 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override(
     function(){
         $data['title'] = '404';
-        
-        $field = [
-            'ip_address' => getHostByName(getHostName()),
-            'url'        => current_url(),
-        ];
-        model('Handling_404')->insert($field);
-
         $data['content'] = view('errors/e404');
         return view('dashboard/header',$data);
     }

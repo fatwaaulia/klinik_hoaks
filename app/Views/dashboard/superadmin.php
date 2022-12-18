@@ -102,10 +102,8 @@
         </div>
         <div class="col-lg-8">
             <div class="card">
-                <div class="card-header">
+                    <div class="card-body">
                     <h5 class="fw-600">Jumlah persebaran data per bulan</h5>
-                </div>
-                <div class="card-body">
                     <div class="chart">
                         <canvas id="chartjs-line"></canvas>
                     </div>
@@ -127,9 +125,6 @@
 
     $jumlah = array_count_values($nama_platform_hoaks);
     $nama_platform = array_unique($nama_platform_hoaks);
-
-    // print_r( $jumlah); echo '<br>';
-    // print_r( $nama_platform);
 ?>
 <script>
 document.addEventListener("DOMContentLoaded", function() {

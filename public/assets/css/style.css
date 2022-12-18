@@ -33,7 +33,7 @@ body {
 
 h1,h2,h3,h4,h5,h6,p,span,a,div,button,label {
     font-family: 'Poppins', sans-serif!important;
-    /* letter-spacing: 0.3px!important; */
+    letter-spacing: 0.3px!important;
 }
 
 input[name="username"] {
@@ -50,6 +50,11 @@ a {
 
 .ws-normal {
     white-space: normal;
+}
+
+/* BOOTSTRAP */
+.card {
+    border-radius: 15px;
 }
 
 /* SWEET ALERT */

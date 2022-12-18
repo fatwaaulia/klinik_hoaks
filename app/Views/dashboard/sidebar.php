@@ -26,13 +26,13 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'role'    => ['1','2','3'],
 					],
 					// SUPERADMIN
-					[
-						'text'    => 'Kelola Pengguna',
-						'url'     => 'user',
-						'icon'    => 'fa-solid fa-user-group',
-						'active'  => 'user',
-						'role'    => ['1'],
-					],
+					// [
+					// 	'text'    => 'Kelola Pengguna',
+					// 	'url'     => 'user',
+					// 	'icon'    => 'fa-solid fa-user-group',
+					// 	'active'  => 'user',
+					// 	'role'    => ['1'],
+					// ],
 					[
 						'text'    => 'VALIDASI INFORMASI',
 						'role'   => ['1'],
@@ -85,17 +85,6 @@ $user = model('User')->where('id', $user_session['id'])->first();
 						'url'     => 'unsubscriber',
 						'icon'    => 'fa-regular fa-bell-slash',
 						'active'  => 'unsubscriber',
-						'role'    => ['1'],
-					],
-					[
-						'text'    => 'KEAMANAN',
-						'role'   => ['1'],
-					],
-					[
-						'text'    => 'Handling 404',
-						'url'     => 'handling-404',
-						'icon'    => 'fa-solid fa-circle-exclamation',
-						'active'  => 'handling-404',
 						'role'    => ['1'],
 					],
 					// ADMIN

@@ -8,7 +8,7 @@ class Pengaduan extends Model
 {
     protected $table         = 'pengaduan';
     protected $allowedFields = [
-        'id_berita',
+        'id_informasi',
         'kode',
         'nama',
         'telp',

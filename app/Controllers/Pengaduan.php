@@ -107,11 +107,15 @@ class Pengaduan extends BaseController
             
             $data['name'] = $toName;
             $data['text'] = 'Terima kasih telah melakukan permohonan klarifikasi informasi. 
-                            <br> Anda mendapatkan nomor tiket : '. $get_tiket.
-                            '<br> <br> Silahkan cek klarifikasi melalui link berikut : <a href="'.base_url(). '/pengaduan/tracking/' . $get_tiket . '">'.base_url(). '/pengaduan/tracking/' . $get_tiket.'</a>';
+                            <br> Nomor tiket Anda : '. $get_tiket.
+                            '<br> <br> Silahkan cek klarifikasi melalui link berikut : <a href="'.base_url(). '/pengaduan/lacak-tiket?kode=' . $get_tiket . '">'.base_url(). '/pengaduan/lacak-tiket?kode=' . $get_tiket.'</a>';
+            $data['text_2'] = '';
             $data['button_link'] = '';
             $data['button_name'] = '';
             $message = view('auth/email_template', $data);
+
+            // echo $message;
+            // die;
 
             $email = service('email');
             $email->setFrom($email->fromEmail, $email->fromName);
@@ -182,13 +186,13 @@ class Pengaduan extends BaseController
         $data = $this->model->find($decode);
 
         $rules = [
-            'id_berita'       => 'required',
+            'id_informasi'       => 'required',
         ];
         if (! $this->validate($rules)) {
             return redirect()->back()->withInput();
         }else {
             $field = [
-                'id_berita'       => $this->request->getVar('id_berita', $this->filter),
+                'id_informasi'       => $this->request->getVar('id_informasi', $this->filter),
             ];
             
             // dd($field);

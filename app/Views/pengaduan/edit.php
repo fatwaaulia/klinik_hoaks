@@ -45,7 +45,7 @@
                                     if ($data['img']) {
                                         $img = base_url('assets/img/'.$name.'/'.$data['img']);
                                     } else {
-                                        $img = base_url('assets/img/user-default.png');
+                                        $img = base_url('assets/img/default.png');
                                     }
                                     ?>
                                         <img src="<?= $img ?>" class="w-100 h-100 img-style" id="frame">
@@ -66,7 +66,7 @@
                                 <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script>
 
                                 <div class="mb-3">
-                                    <label for="id_role" class="form-label">Status</label> <span class="text-secondary">Pilih informasi untuk klarifikasi</span>
+                                    <label for="" class="form-label">Status</label> <span class="text-secondary">Pilih informasi untuk klarifikasi</span>
                                     <select class="form-select <?= $val->hasError('id_informasi') ? "is-invalid" : '' ?>" name="id_informasi" id="select_box">
                                     <option value="">-Pilih Informasi-</option>
                                         <?php

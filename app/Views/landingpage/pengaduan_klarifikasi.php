@@ -31,8 +31,8 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Isi Laporan</label>
-                            <textarea class="form-control <?= $val->hasError('deskripsi') ? "is-invalid" : '' ?>" name="deskripsi" id="deskripsi" rows="3" placeholder="Masukkan isi laporan"><?= old('deskripsi') ?></textarea>
+                            <label for="deskripsi" class="form-label">Isi Pengaduan</label>
+                            <textarea class="form-control <?= $val->hasError('deskripsi') ? "is-invalid" : '' ?>" name="deskripsi" id="deskripsi" rows="3" placeholder="Masukkan isi pengaduan"><?= old('deskripsi') ?></textarea>
                             <div class="invalid-feedback">
                                 <?= $val->getError('deskripsi') ?>
                             </div>

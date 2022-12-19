@@ -83,15 +83,15 @@ $routes->post('delete/image', 'User::deleteProfileImg');
 
 // SUPERADMIN
 // User
-$routes->group('user', ['filter' => 'Superadmin'], static function ($routes) {
-    $routes->get('/', 'User::index');
-    $routes->get('new', 'User::new');
-    $routes->post('create', 'User::create');
-    $routes->get('edit/(:segment)', 'User::edit/$1');
-    $routes->post('update/(:segment)', 'User::update/$1');
-    $routes->post('delete/(:segment)', 'User::delete/$1');
-    $routes->post('delete-image/(:segment)', 'User::deleteImg/$1');
-});
+// $routes->group('user', ['filter' => 'Superadmin'], static function ($routes) {
+//     $routes->get('/', 'User::index');
+//     $routes->get('new', 'User::new');
+//     $routes->post('create', 'User::create');
+//     $routes->get('edit/(:segment)', 'User::edit/$1');
+//     $routes->post('update/(:segment)', 'User::update/$1');
+//     $routes->post('delete/(:segment)', 'User::delete/$1');
+//     $routes->post('delete-image/(:segment)', 'User::deleteImg/$1');
+// });
 // Pengaduan
 $routes->group('pengaduan', static function ($routes) {
     $routes->get('/', 'Pengaduan::index', ['filter' => 'Superadmin']);

@@ -36,12 +36,12 @@
 						</div>
 					</form>
 
-					<div class="text-center">
+					<!-- <div class="text-center">
 						<span>Belum punya akun?</span>
 						<a href="<?= base_url('register') ?>">
 						<span>Daftar</span>
 						</a>
-					</div>
+					</div> -->
 				</div>
 			</div>
 

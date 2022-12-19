@@ -43,8 +43,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
+                <?php
+                $uri_1 = service('uri')->getSegment(1);
+                if($uri_1) {
+                    $uri_2 = service('uri')->getSegment(2);
+                } else {
+                    $uri_2 = '';
+                }
+                ?>
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="<?= base_url() ?>">Beranda</a>
+                    <a class="nav-link active <?= $uri_1 == '' ? 'nav-item-active' : '' ?> text-white" aria-current="page" href="<?= base_url() ?>">Beranda</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,11 +63,11 @@
                         <li><a class="dropdown-item" href="https://drive.google.com/file/d/1EilHJxBS068ji7bPBFrulTGtPFOuFO3U/view" target=_blank">Standart Pelayanan</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?= $uri_2 == 'klarifikasi' ? 'nav-item-active' : '' ?>">
                     <a class="nav-link active text-white" aria-current="page" href="<?= base_url('pengaduan/klarifikasi') ?>">Klarifikasi Informasi</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link <?= $uri_1 == 'kategori' ? 'nav-item-active' : '' ?> text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Kategori
                     </a>
                     <ul class="dropdown-menu">
@@ -71,16 +79,29 @@
                         <?php endforeach; ?>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?= $uri_2 == 'lacak-tiket' ? 'nav-item-active' : '' ?>">
                     <a class="nav-link active text-white" aria-current="page" href="<?= base_url('pengaduan/lacak-tiket') ?>">Lacak Tiket</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?= $uri_1 == 'subscribe' ? 'nav-item-active' : '' ?>">
                     <a class="nav-link active text-white" aria-current="page" href="<?= base_url('subscribe') ?>">Subscribe</a>
                 </li>
             </ul>
             </div>
         </div>
     </nav>
+    <style>
+        .nav-item-active {
+            border-bottom:4px solid #dc3545;
+            font-weight:600;
+        }
+        .nav-item {
+            transition:.5s;
+            margin-right:6px;
+        }
+        .nav-item:hover {
+            border-bottom:4px solid #dc3545;
+        }
+    </style>
 
     <div style="margin-top:69px"></div>
 
@@ -91,7 +112,7 @@
     ?>
 
     <footer>
-        <div class="container-fluid text-white" style="background:#131F71">
+        <div class="container-fluid text-white img-style" style="background:#131F71;background-image:url('<?= base_url().'/assets/img/footer-gedung.png' ?>')">
             <div class="container">
                 <div class="row py-5">
                     <div class="col-lg-3">

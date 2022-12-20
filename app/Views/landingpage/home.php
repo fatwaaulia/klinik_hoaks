@@ -136,9 +136,11 @@
                     <h5 class="fw-600">Hoaks</h5>
                     <p class="text-secondary">Informasi yang mengandung data palsu/salah/tidak terbukti kebenarannya</p>
                     <div class="text-center">
-                        <button class="btn btn-outline-danger rounded-circle">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                        <a href="<?= base_url('kategori/hoaks') ?>">
+                            <button class="btn btn-outline-danger rounded-circle">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -149,9 +151,11 @@
                     <h5 class="fw-600">Fakta</h5>
                     <p class="text-secondary">Data yang benar terjadi dan dapat dibuktikan</p>
                     <div class="text-center">
-                        <button class="btn btn-outline-success rounded-circle">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                        <a href="<?= base_url('kategori/fakta') ?>">
+                            <button class="btn btn-outline-success rounded-circle">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -162,9 +166,11 @@
                     <h5 class="fw-600">Disinformasi</h5>
                     <p class="text-secondary">Informasi yang diolah sehingga menimbulkan bias makna pada suatu isu</p>
                     <div class="text-center">
-                        <button class="btn btn-outline-primary rounded-circle">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                        <a href="<?= base_url('kategori/disinformasi') ?>">
+                            <button class="btn btn-outline-primary rounded-circle">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -175,9 +181,11 @@
                     <h5 class="fw-600">Hate Speech</h5>
                     <p class="text-secondary">Pendapat/ide/pikiran seseorang terhadap suatu isu yang ditunjukan untuk membangun kebencian</p>
                     <div class="text-center">
-                        <button class="btn btn-outline-warning rounded-circle">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                        <a href="<?= base_url('kategori/hate-speech') ?>">
+                            <button class="btn btn-outline-warning rounded-circle">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
